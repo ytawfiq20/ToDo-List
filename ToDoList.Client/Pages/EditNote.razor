@@ -1,0 +1,30 @@
+﻿@inherits ComponentBase
+@inject ITaskNotes notesService
+@inject NavigationManager navigate
+
+<h3>EditNote</h3>
+<EditForm Model="note" OnValidSubmit="Update" FormName="Starship3">
+    <FluentValidationValidator />
+    <div>
+        <label for="Note"> Note </label>
+        <br />
+        <InputTextArea @bind-Value="note.Note" class="form-control" placeholder="Enter Note" />
+        <ValidationMessage For="@(() => note.Note)" />
+        <br />
+        <button class="btn btn-success" type="submit">Edit Note</button>
+    </div>
+</EditForm>
+<hr />
+
+@code {
+    [Parameter]
+    public TaskNotes? note{ get; set; }
+
+
+    public async Task Update()
+    {
+        await notesService.UpdateNote(note);
+        navigate.NavigateTo($"/Notes/{note.TaskId}", forceLoad: true);
+    }
+
+}

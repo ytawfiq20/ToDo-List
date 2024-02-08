@@ -1,0 +1,26 @@
+﻿@inherits ComponentBase
+@inject IDayLists listService
+@inject NavigationManager navigate
+
+<h4>DeleteList</h4>
+<EditForm Model="list" OnSubmit="OnDelete">
+    <label for="List Name"> List Name </label>
+    <br />
+    <InputText @bind-Value=@list.ListName class="form-control" placeholder="Enter Task Name" disabled="@true" />
+    <br />
+    <button class="btn btn-danger" type="submit">Delete List</button>
+</EditForm>
+<hr />
+
+@code {
+
+    [Parameter]
+    public DayLists list{ get; set; }
+
+    public async Task OnDelete()
+    {
+        await listService.DeleteList(list.Id);
+        navigate.NavigateTo("/Lists", forceLoad: true);
+    }
+
+}

@@ -1,0 +1,95 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = ToDoList.Client
+build_property.RootNamespace = ToDoList.Client
+build_property.ProjectDir = D:\my_source_code\C#\ToDoList.Solution\ToDoList.Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\my_source_code\C#\ToDoList.Solution\ToDoList.Client
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/AddList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/AddNote.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkTm90ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/AddTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVGFzay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/DeleteList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/DeleteNote.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlTm90ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/DeleteTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlVGFzay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/EditList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/EditNote.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdE5vdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/EditTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFRhc2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/Notes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/TasksByListId.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza3NCeUxpc3RJZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/Timer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGltZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Pages/ViewLists.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0xpc3RzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-a4su6o1e8v
+
+[D:/my_source_code/C\#/ToDoList.Solution/ToDoList.Client/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yixuhn2q92

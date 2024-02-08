@@ -1,0 +1,34 @@
+﻿
+@inherits ComponentBase
+@inject IDayLists listService
+@inject IListTasks taskService
+@inject NavigationManager navigate
+
+
+<h3>DeleteTask</h3>
+
+<EditForm Model="task" OnSubmit="OnDelete">
+    <label for="Task Name"> Task Name </label>
+    <InputText @bind-Value=@task.TaskName class="form-control" placeholder="Enter Task Name" disabled="@true" />
+    <label for="Task Description"> Task Description </label>
+    <InputTextArea @bind-Value=@task.TaskDescription class="form-control" placeholder="Enter Task Description" disabled="@true" />
+    <label for="Starting Time"> Starting Time </label>
+    <InputDate Type="InputDateType.Time" class="form-control" @bind-Value=@task.StartingAt disabled="@true" />
+    <label for="Ending Time"> Ending Time </label>
+    <InputDate Type="InputDateType.Time" class="form-control" @bind-Value=@task.EndingAt disabled="@true" />
+    <button class="btn btn-danger" type="submit">Delete Task</button>
+</EditForm>
+<hr />
+
+@code {
+
+    [Parameter]
+    public ListTasks task { get; set; }
+
+    public async Task OnDelete()
+    {
+        await taskService.DeleteTask(task.Id);
+        navigate.NavigateTo($"/Tasks/{task.ListId}", forceLoad: true);
+    }
+
+}

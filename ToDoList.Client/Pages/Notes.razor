@@ -1,0 +1,86 @@
+﻿@page "/Notes/{taskId}"
+@inherits ComponentBase
+@inject ITaskNotes notesService
+@inject NavigationManager navigate
+
+<center>
+    <h2>Notes</h2>
+</center>
+<hr />
+@if (edit == true)
+{
+    <EditNote note=@note></EditNote>
+}
+else if (delete == true)
+{
+    <DeleteNote note=@note></DeleteNote>
+}
+else
+{
+    <AddNote taskId=@taskId ></AddNote>
+}
+
+@if(taskNotes==null){
+    <h4>No Notes......</h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Note</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var n in taskNotes)
+            {
+                <tr>
+                    <td>@(++index)</td>
+                    <td>@n.Note</td>
+                    <td>
+                        <button class="btn btn-success" @onclick="()=>OnEditClick(n.Id)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="()=>OnDeleteClick(n.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+            @{
+                index = 0;
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    [Parameter]
+    public string taskId{ get; set; }
+    public IEnumerable<TaskNotes>? taskNotes{ get; set; }
+    public int index = 0;
+    public TaskNotes note { get; set; } = new();
+    public bool edit = false, delete = false;
+    protected async override Task OnInitializedAsync()
+    {
+        taskNotes = await notesService.GetAllNotesByTaskId(new Guid(taskId));
+    }
+
+    public async Task OnEditClick(Guid noteId)
+    {
+        delete = false;
+        edit = true;
+        note = await notesService.GetNoteById(noteId);
+    }
+
+    public async Task OnDeleteClick(Guid noteId)
+    {
+        edit = false;
+        delete = true;
+        note = await notesService.GetNoteById(noteId);
+    }
+
+
+}

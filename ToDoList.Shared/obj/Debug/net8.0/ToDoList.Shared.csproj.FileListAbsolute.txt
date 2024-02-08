@@ -1,0 +1,11 @@
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\bin\Debug\net8.0\ToDoList.Shared.deps.json
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\bin\Debug\net8.0\ToDoList.Shared.dll
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\bin\Debug\net8.0\ToDoList.Shared.pdb
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.AssemblyInfoInputs.cache
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.AssemblyInfo.cs
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.csproj.CoreCompileInputs.cache
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.dll
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\refint\ToDoList.Shared.dll
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ToDoList.Shared.pdb
+D:\my_source_code\C#\ToDoList.Solution\ToDoList.Shared\obj\Debug\net8.0\ref\ToDoList.Shared.dll
