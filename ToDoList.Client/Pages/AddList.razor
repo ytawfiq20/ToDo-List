@@ -1,0 +1,35 @@
+﻿@inherits ComponentBase
+@inject IDayLists listService
+@inject NavigationManager navigate
+
+<h4>Add List</h4>
+
+<EditForm Model="@list" OnValidSubmit="Add" FormName="Starship3">
+    <FluentValidationValidator />
+    <div>
+        <label for="List Name"> List Name </label>
+        <br />
+        <InputText @bind-Value="list.ListName" class="form-control" placeholder="Enter name" />
+        <ValidationMessage For="@(() => list.ListName)" />
+        <br />
+        <label for="List Day"> List Day </label>
+        <br />
+        <InputDate @bind-Value="list.ListDay" class="form-control" placeholder="Enter email" />
+        <ValidationMessage For="@(() => list.ListDay)" />
+        <br />
+        <button class="btn btn-success" type="submit">Add List</button>
+    </div>
+</EditForm>
+<hr />
+@code {
+
+    public DayLists list { get; set; } = new();
+
+
+    public async Task Add()
+    {
+        await listService.AddNewList(list);
+        navigate.NavigateTo("/Lists", forceLoad: true);
+    }
+
+}

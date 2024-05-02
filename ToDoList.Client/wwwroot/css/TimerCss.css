@@ -1,0 +1,19 @@
+﻿h1 {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+
+    text-shadow: 2px 2px 2px gray;
+    font-size: 150px;
+    text-align: center;
+    padding: 70px 0;
+}
+
+
+h3 {
+    color: red;
+    text-shadow: 2px 2px 2px gray;
+    font-size: 50px;
+    text-align: center;
+    padding: 70px 0,;
+}

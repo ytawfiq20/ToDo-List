@@ -1,0 +1,105 @@
+﻿@page "/Timer"
+
+<h3>Timer</h3>
+<hr />
+@if (timerClass.timerStarted == true)
+{
+    <h1> @timerClass.hours:@timerClass.minutes:@timerClass.currentCount </h1>
+    <button class="btn btn-danger" @onclick="()=>StopTimer()">Stop Timer</button>
+}
+else
+{
+    <h1> @timerClass.hours:@timerClass.minutes:@timerClass.currentCount </h1>
+    <button class="btn btn-primary" @onclick="()=>StartTimer()">Start Timer</button>
+}
+<button class="btn btn-secondary" @onclick="()=>ResetCounter()">Reset Timer</button>
+<style>
+
+    h1 {
+        margin: auto;
+        width: 50%;
+        text-shadow: 2px 2px 2px gray;
+        font-size: 150px;
+        text-align: center;
+        padding: 70px 0;
+    }
+
+
+    h3 {
+        color: red;
+        text-shadow: 2px 2px 2px gray;
+        font-size: 50px;
+        text-align: center;
+        padding: 70px 0,;
+    }
+</style>
+
+@code {
+    public TimerClass timerClass = new TimerClass();
+
+
+    public async Task StartTimer()
+    {
+        timerClass.timerStarted = true;
+        timerClass.timer = new System.Timers.Timer(1000);
+        timerClass.timer.Elapsed += IncrementCounter;
+        timerClass.timer.Enabled = true;
+    }
+
+    public async void IncrementCounter(object o, System.Timers.ElapsedEventArgs e)
+    {
+        if (timerClass.currentCount < timerClass.maxTimerCount)
+        {
+            timerClass.currentCount++;
+        }
+        else
+        {
+            timerClass.currentCount = 0;
+            timerClass.minutes++;
+            if (timerClass.minutes == 59)
+            {
+                timerClass.hours++;
+                timerClass.minutes = 0;
+            }
+        }
+        await InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
+    public void asignCounter()
+    {
+        timerClass.asignCount = timerClass.currentCount;
+    }
+
+    private void ResetCounter()
+    {
+        timerClass.currentCount = 0;
+        timerClass.minutes = 0;
+        timerClass.hours = 0;
+        timerClass.timer.Enabled = true;
+    }
+
+    public async ValueTask StopTimer()
+    {
+        await Task.Run(() => timerClass.timer?.Dispose());
+        timerClass.timerStarted = false;
+        await InvokeAsync(() =>
+    {
+    StateHasChanged();
+    });
+    }
+
+    public record TimerClass
+    {
+        public int minutes { get; set; } = 0;
+        public int hours { get; set; } = 0;
+        public int maxTimerCount { get; set; } = 59;
+        public int currentCount { get; set; } = 0;
+        public int asignCount { get; set; } = 0;
+        public System.Timers.Timer? timer;
+        public bool timerStarted = false;
+    }
+
+}

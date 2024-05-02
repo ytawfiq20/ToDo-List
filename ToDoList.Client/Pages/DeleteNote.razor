@@ -1,0 +1,30 @@
+﻿@inherits ComponentBase
+@inject ITaskNotes notesService
+@inject NavigationManager navigate
+
+<h3>DeleteNote</h3>
+<hr />
+<EditForm Model="@note" OnValidSubmit="Delete" FormName="Starship3">
+    <FluentValidationValidator />
+    <div>
+        <label for="Note"> Note </label>
+        <br />
+        <InputTextArea @bind-Value="note.Note" class="form-control" placeholder="Enter Note" disabled=@true />
+        <ValidationMessage For="@(() => note.Note)" />
+        <br />
+        <button class="btn btn-danger" type="submit">Delete Note</button>
+    </div>
+</EditForm>
+<hr />
+
+@code {
+    [Parameter]
+    public TaskNotes note { get; set; }
+
+    public async Task Delete()
+    {
+        await notesService.DeleteNote(note.Id);
+        navigate.NavigateTo($"/Notes/{note.TaskId}", forceLoad: true);
+    }
+
+}

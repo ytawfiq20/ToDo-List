@@ -1,0 +1,131 @@
+﻿@page "/Tasks/{id}"
+
+
+@inject IListTasks taskService
+@inject NavigationManager navigate
+@inherits ComponentBase
+
+<center>
+    <h2>Tasks</h2>
+</center>
+
+<hr />
+
+@if(edit == true)
+{
+    <EditTask task=task></EditTask>
+}
+else if (delete == true)
+{
+    <DeleteTask task=task></DeleteTask>
+}
+else
+{
+    <AddTask task=@task></AddTask>
+}
+
+@if(listTasks == null)
+{
+    <h4>No Tasks.....</h4>
+}
+
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Starting At</th>
+                <th>Ending At</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in listTasks)
+            {
+                <tr>
+                    <td>@(index++)</td>
+                        <td>@t.TaskName</td>
+                        <td>@t.TaskDescription</td>
+                        <td>@t.StartingAt.ToString("hh:mm tt")</td>
+                        <td>@t.EndingAt.ToString("hh:mm tt")</td>
+     
+                        <td>
+                            @if (t.IsDone == false)
+                            {
+                                <button class="btn btn-primary" @onclick="()=>OnActionClick(t.Id)">I Finish</button>
+                            }
+                            else
+                            {
+                            <button class="btn btn-secondary" @onclick="()=>OnActionClick(t.Id)">Task Completed</button>
+                            }
+                        </td>
+                    
+                        <td>
+                            <button class="btn btn-success" @onclick="()=>OnEditClick(t.Id)">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" @onclick="()=>OnDeleteClick(t.Id)">Delete</button>
+                        </td>
+                        <td>
+                        <a class="btn btn-primary" href="/Notes/@t.Id" role="button">Notes</a>
+                        </td>
+                
+                </tr>
+            }
+            @{
+                index = 1;
+            }
+        </tbody>
+     </table>
+
+}
+
+@code {
+
+    [Parameter] 
+    public string id{ get; set; }
+    public int index = 1;
+    protected IEnumerable<ListTasks>? listTasks{ get; set; }
+    protected ListTasks task { get; set; } = new();
+    public bool edit = false, delete = false;
+
+    protected async override Task OnInitializedAsync()
+    {
+        listTasks = await taskService.GetAllTasksByListId(ToGuid(id));
+        task.ListId = new Guid(id);
+    }
+
+    public Guid ToGuid(string id)
+    {
+        return new Guid(id);
+    }
+
+    public async Task OnActionClick(Guid taskId)
+    {
+        task = await taskService.GetTaskById(taskId);
+        task.IsDone =  task.IsDone == true ? false : true;
+        await taskService.UpdateTask(task);
+        navigate.NavigateTo($"/Tasks/{task.ListId}", forceLoad: true);
+    }
+
+    public async Task OnEditClick(Guid taskId)
+    {
+        delete = false;
+        edit = true;
+        task = await taskService.GetTaskById(taskId);
+    }
+
+    public async Task OnDeleteClick(Guid taskId)
+    {
+        delete = true;
+        edit = false;
+        task = await taskService.GetTaskById(taskId);
+    }
+
+}

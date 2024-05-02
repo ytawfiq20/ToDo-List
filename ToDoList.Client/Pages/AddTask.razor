@@ -1,0 +1,39 @@
+﻿
+@inherits ComponentBase
+@inject IDayLists listService
+@inject IListTasks taskService
+@inject NavigationManager navigate
+
+<h4>Add Task</h4>
+
+
+<EditForm Model="@task" OnValidSubmit="Add">
+    <DataAnnotationsValidator />
+    <label for="@task.TaskName"> Task Name </label>
+    <InputText @bind-Value=@task.TaskName class="form-control" placeholder="Enter Task Name"></InputText>
+    <ValidationMessage For="@(()=>task.TaskName)" />
+    <label for="@task.TaskDescription"> Task Description </label>
+    <InputTextArea @bind-Value=@task.TaskDescription class="form-control" placeholder="Enter Task Description"></InputTextArea>
+    <ValidationMessage For="@(()=>task.TaskDescription)" />
+    <label for="@task.StartingAt"> Starting At </label>
+    <InputDate Type="InputDateType.Time" class="form-control" @bind-Value=@task.StartingAt />
+    <ValidationMessage For="@(()=>task.StartingAt)" />
+    <label for="@task.EndingAt"> Ending At </label>
+    <InputDate Type="InputDateType.Time" class="form-control" @bind-Value=@task.EndingAt></InputDate>
+    <ValidationMessage For="@(()=>task.EndingAt)" />
+    <button class="btn btn-success" type="submit">Add Task</button>
+</EditForm>
+
+<hr />
+
+@code {
+    [Parameter]
+    public ListTasks task { get; set; } = new ListTasks();
+
+    public async Task Add()
+    {
+        await taskService.AddTask(task);
+        navigate.NavigateTo($"/Tasks/{task.ListId}", forceLoad: true);
+    }
+
+}

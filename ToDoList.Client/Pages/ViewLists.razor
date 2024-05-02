@@ -1,0 +1,102 @@
+﻿@page "/Lists"
+
+@inject IDayLists listService
+@inject NavigationManager navigate
+@inherits ComponentBase
+
+<center>
+    <h2>To Do List</h2>
+</center>
+
+<hr />
+
+@if (edit == true)
+{
+    <EditList list=list></EditList>
+}
+else if(delete == true)
+{
+    <DeleteList list=list></DeleteList>
+}
+else
+{
+    <AddList></AddList>
+}
+
+@if (lists == null)
+{
+    <h4>No Lists yet.......</h4>
+}
+else
+{
+    <center>
+        <h2>All Lists</h2>
+    </center>
+    <hr />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Day</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var t in lists)
+            {
+                <tr>
+
+                    <td>@(++index)</td>
+                    <td>@t.ListName</td>
+                    <td>@t.ListDay.ToString().Split(" ")[0]</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Tasks/@t.Id" role="button">Tasks</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" @onclick="()=>OnEditClick(t.Id)">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="()=>OnDeleteClick(t.Id)">Delete</button>
+                    </td>
+
+                </tr>
+            }
+            @{
+                index = 0;
+            }
+        </tbody>
+    </table>
+}
+
+
+
+@code {
+    public bool edit = false, delete = false;
+    protected IEnumerable<DayLists>? lists { get; set; }
+    public string listId { get; set; } = null;
+
+    public DayLists list { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        lists = await listService.GetAllLists();
+    }
+    public int index = 0;
+    public async Task OnEditClick(Guid id)
+    {
+        edit = true;
+        delete = false;
+        list = await listService.GetListById(id);
+    }
+
+    public async Task OnDeleteClick(Guid id)
+    {
+        delete = true;
+        edit = false;
+        list = await listService.GetListById(id);
+    }
+
+}
